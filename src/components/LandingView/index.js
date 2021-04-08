@@ -23,7 +23,7 @@ const LandingView = () => {
     }
 
     return (
-        <LandingContainer>
+        <LandingContainer id="home">
             <Background>
                 <Video autoPlay loop muted src={BgVideo} type='video/mp4' />
             </Background>

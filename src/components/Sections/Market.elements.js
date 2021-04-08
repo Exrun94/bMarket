@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+
+export const MarketContainer = styled.div`
     height: 800px;
     display: flex;
     flex-direction: column;
@@ -9,7 +10,7 @@ export const Container = styled.div`
     background: #f9f9f9;
 
     @media screen and (max-width: 768px) {
-        height: 1100px;
+        height: 1200px;
     }
 
     @media screen and (max-width: 480px) {
@@ -17,7 +18,7 @@ export const Container = styled.div`
     }
 `;
 
-export const Wrapper = styled.div`
+export const MarketWrapper = styled.div`
     max-width: 1000px;
     margin: 0 auto;
     display: grid;
@@ -36,33 +37,8 @@ export const Wrapper = styled.div`
     }
 `;
 
-export const Card = styled.div`
-    background: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    border-radius: 10px;
-    max-height: 340px;
-    padding: 30px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-    transition: all 0.2s ease-in-out;
 
-    &:hover {
-        transform: scale(1.02);
-        transition: all 0.2s ease-in-out;
-        cursor: pointer;
-    }
-`;
-
-
-export const Icon = styled.img`
-    height: 160px;
-    width: 160px;
-    margin-bottom: 10px;
-`;
-
-export const H1 = styled.h1`
+export const MarketH1 = styled.h1`
     font-size: 2.5 rem;
     color: #000;
     margin-bottom: 64px;
@@ -72,12 +48,3 @@ export const H1 = styled.h1`
     }
 `;
 
-export const H2 = styled.h1`
-    font-size: 1 rem;
-    margin-bottom: 10px;
-`;
-
-export const P = styled.p`
-    font-size: 1rem;
-    text-align: center;
-`;

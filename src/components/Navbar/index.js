@@ -40,7 +40,7 @@ const Navbar = ({ toggle }) => {
         <IconContext.Provider value={{ color: 'white' }}>
             <Nav scrollNav={scrollNav}>  
                 <NavbarContainer> 
-                    <NavLogo to="/" onClick={toggleHome}>bcoin</NavLogo>
+                    <NavLogo to="/" onClick={toggleHome}>bMarket</NavLogo>
                     <MobileIcon onClick={toggle}>
                         <FaBars />
                     </MobileIcon>
@@ -92,7 +92,7 @@ const Navbar = ({ toggle }) => {
                         </NavItem>
                     </NavMenu>
                     <NavBtn>
-                        <NavBtnLink to="/signin">Sign In</NavBtnLink>
+                        <NavBtnLink to="signin">Sign In</NavBtnLink>
                     </NavBtn>
                 </NavbarContainer>
             </Nav>

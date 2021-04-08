@@ -1,4 +1,4 @@
-export const SectionOne = {
+export const SectionAbout = {
     id: 'about',
     lightBg: false,
     lightText: true,
@@ -9,13 +9,13 @@ export const SectionOne = {
     buttonLabel: 'Get started',
     imgStart: false,
     img: require('../../images/svg-1.svg').default,
-    alt: 'Car',
+    alt: 'Wallet',
     dark: true,
     primary: true,
     darkText: false
 }
 
-export const SectionTwo = {
+export const SectionDiscover = {
     id: 'discover',
     lightBg: true,
     lightText: false,
@@ -26,13 +26,13 @@ export const SectionTwo = {
     buttonLabel: 'Learn More',
     imgStart: true,
     img: require('../../images/svg-2.svg').default,
-    alt: 'Piggy Bank',
+    alt: 'Real-time',
     dark: false,
     primary: false,
     darkText: true
 }
 
-export const SectionThree = {
+export const SectionSignUp = {
     id: 'signup',
     lightBg: true,
     lightText: false,
@@ -43,7 +43,7 @@ export const SectionThree = {
     buttonLabel: 'Start Now',
     imgStart: false,
     img: require('../../images/svg-7.svg').default,
-    alt: 'Paper',
+    alt: 'Login',
     dark: false,
     primary: false,
     darkText: true

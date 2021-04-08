@@ -3,7 +3,8 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import LandingView from '../components/LandingView'
 import Sections from '../components/Sections'
-import { SectionOne, SectionThree, SectionTwo } from '../components/Sections/data'
+import Service from '../components/Sections/Service'
+import { SectionAbout, SectionDiscover, SectionSignUp } from '../components/Sections/Sections.config'
 
 
 const Home = () => {
@@ -20,9 +21,10 @@ const Home = () => {
         <Router>
             <Navbar toggle={toggle}/>
             <LandingView />
-            <Sections {...SectionOne}/>
-            <Sections {...SectionTwo}/>
-            <Sections {...SectionThree}/>
+            <Sections {...SectionAbout}/>
+            <Sections {...SectionDiscover}/>
+            <Service />
+            <Sections {...SectionSignUp}/>
         </Router>
     )
 }

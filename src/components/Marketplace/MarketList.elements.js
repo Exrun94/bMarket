@@ -2,12 +2,15 @@ import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 
 export const MarketContainer = styled.div`
+    background: #f9f9f9;
+
 `;
 
 export const MarketWrapper = styled.div`
     display: flex;
     justify-content: center;
-    margin: 40px;
+    margin: 80px;
+    background: #fff;
 `;
 
 export const Table = styled.table`
@@ -53,6 +56,30 @@ export const TD = styled.td`
     &.change {
         color: ${({color}) => (color ? '#16c784' : '#ea3943')};
     }
+
+    &.volume {
+        @media screen and (max-width: 768px) {
+            display: none;
+        }
+    }
+
+    &.cap {
+        @media screen and (max-width: 768px) {
+            display: none;
+        }
+    }
+
+    &.buy {
+        @media screen and (max-width: 768px) {
+            display: none;
+        }
+    }
+
+    &.rank {
+        @media screen and (max-width: 768px) {
+            display: none;
+        }
+    }
 `;
 
 export const Img = styled.img`
@@ -74,5 +101,26 @@ export const Details = styled(Link)`
 
     &:hover {
         color: var(--primary)
+    }
+`;
+
+export const BuyBtn = styled(Link)`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px 0 10px;
+    background: #e0e0e0;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+    color: #000;
+    font-size: 0.8em;
+
+    &:hover {
+        background-color: var(--primary);
+        transition: all 0.2s ease-in-out;
     }
 `;

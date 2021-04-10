@@ -1,13 +1,12 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-    margin-bottom: 64px;
-    display: flex;
-    align-items: center;
-    width: 300px;
+    margin: 140px 300px 64px 300px;
 `;
 
 export const Input = styled.input`
+    display: block;
+    margin: 0 auto;
     background: #222531;
     color: #e2e2e2;
     border: none;
@@ -16,6 +15,7 @@ export const Input = styled.input`
     outline: none;
     height: 100%;
     width: 100%;
+
 
     ::placeholder {
         color: #e2e2e2;

@@ -3,8 +3,8 @@ import LandingView from '../components/LandingView'
 import Sections from '../components/Sections'
 import Service from '../components/Sections/Service'
 import { SectionAbout, SectionDiscover, SectionSignUp } from '../components/Sections/Sections.config'
-import Market from '../components/Sections/Market'
 import Navbar from '../components/Navbar';
+import Slider from '../components/Slider'
 
 
 const Home = () => {
@@ -20,7 +20,7 @@ const Home = () => {
             <Navbar toggle={toggle}/>
             <LandingView />
             <Sections {...SectionAbout}/>
-            <Market />
+            <Slider />
             <Sections {...SectionDiscover}/>
             <Service />
             <Sections {...SectionSignUp}/>

@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import BgVideo from '../../videos/video.mp4'
-import { Button } from '../Button.element'
+import { ButtonScroll } from '../Button.element'
 
 import { 
     LandingContainer, 
@@ -31,7 +31,7 @@ const LandingView = () => {
                 <H1>Buying Crypto currencies made easy!</H1>
                 <P>Sign up for a new account today and receive up to $250 in credit towards your next purchase.</P>
                 <ButtonWrapper>
-                <Button 
+                <ButtonScroll 
                     to="signup"
                     primary="true"
                     dark="true" 
@@ -43,7 +43,7 @@ const LandingView = () => {
                     exact='true'
                     offset={-80}
                     >Get started {hover ? <ArrowForward /> : <ArrowRight />}
-                    </Button>
+                    </ButtonScroll>
                 </ButtonWrapper>
             </Content>
         </LandingContainer>

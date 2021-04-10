@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from '../Button.element'
+import { ButtonLink } from '../Button.element'
 
 import { 
     ButtonWrapper,
@@ -28,8 +28,8 @@ const Sections = ({lightBg, id, imgStart, heading, lightText, subheading, darkTe
                                 <SubHeading lightText={lightText}>{subheading}</SubHeading>
                                 <Subtitle darkText={darkText}>{subtitle}</Subtitle>
                                 <ButtonWrapper>
-                                    <Button 
-                                    to="home" 
+                                    <ButtonLink 
+                                    to="signin" 
                                     smooth={true} 
                                     duration={500} 
                                     spy={true}
@@ -38,7 +38,7 @@ const Sections = ({lightBg, id, imgStart, heading, lightText, subheading, darkTe
                                     primary={primary ? 1 : 0} 
                                     dark={dark ? 1 : 0}
                                     dark2={dark2 ? 1 : 0}
-                                    >{buttonLabel}</Button>
+                                    >{buttonLabel}</ButtonLink>
                                 </ButtonWrapper>
                             </TextWrapper>
                         </Column1>

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-
+import {Link} from 'react-router-dom'
 
 export const CoinCard = styled.div`
     background: #fff;
@@ -41,4 +41,8 @@ export const CoinMCap = styled.p`
     font-size: 1rem;
     text-align: center;
     padding: 10px;
+`;
+
+export const CoinButton = styled(Link)`
+
 `;

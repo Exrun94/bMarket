@@ -1,6 +1,6 @@
 import React from 'react'
 import { CoinCard, CoinImage, CoinName, CoinPrice, CoinMCap } from './Coin.elements'
-import { Button } from './Button.element'
+import { ButtonLink } from '../Button.element'
 
 const Coin = ({coin}) => {
 
@@ -10,7 +10,7 @@ const Coin = ({coin}) => {
             <CoinName>{coin.name}</CoinName>
             <CoinPrice>${(coin.current_price).toLocaleString()}</CoinPrice>
             <CoinMCap>Market Cap: ${(coin.market_cap).toLocaleString()}</CoinMCap>
-            <Button to="/test">Buy now</Button>
+            <ButtonLink to="/marketplace">Buy now</ButtonLink>
         </CoinCard>
     )
 }

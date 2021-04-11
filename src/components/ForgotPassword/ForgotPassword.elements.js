@@ -123,3 +123,12 @@ export const FormError = styled.p`
     border-radius: 4px;
     padding: 10px 0 10px 50px;
 `;
+
+export const FormMessage = styled.p`
+    font-size: 0.8rem;
+    background-color: #5affa8;
+    color: #000;
+    border: 1px solid #cdffac;
+    border-radius: 4px;
+    padding: 10px 0 10px 50px;
+`;

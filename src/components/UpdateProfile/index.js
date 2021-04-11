@@ -1,41 +1,47 @@
 import React, { useRef, useState } from 'react'
-import { Container,Form,FormButton,FormContent,FormH1,FormInput,FormLabel,FormWrap,Icon,Text, FormError } from './SignUp.elements'
+import { Container,Form,FormButton,FormContent,FormH1,FormInput,FormLabel,FormWrap,Icon,Text, FormError } from './UpdateProfile.elements'
 import { useAuth } from '../../contexts/AuthContext'
 import { useHistory } from "react-router-dom"
 
 
-const SignUp = () => {
+const UpdateProfile = () => {
+
     const emailRef = useRef()
     const passwordRef = useRef()
     const repeatPasswordRef = useRef()
-    const { signup } = useAuth()
+    const { currentUser, updatePassword, updateEmail } = useAuth()
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
     const history = useHistory()
   
-    async function handleSubmit(e) {
+    function handleSubmit(e) {
       e.preventDefault()
-  
+    
       if (passwordRef.current.value !== repeatPasswordRef.current.value) {
         return setError("Passwords do not match")
       }
 
-      if(passwordRef.current.value.length < 6) {
-          return setError('Password must be at least 6 charcters')
+      const promises = []
+      setLoading(true)
+      setError("")
+
+      if(emailRef.current.value !== currentUser.email) {
+          promises.push(updateEmail(emailRef.current.value))
       }
-  
-      try {
-        setError("")
-        setLoading(true)
-        await signup(emailRef.current.value, passwordRef.current.value)
-        history.push("/")
-      } catch {
-          console.log(emailRef.current.value, passwordRef.current.value)
-        setError("Failed to create an account")
+
+      if(passwordRef.current.value) {
+          promises.push(updatePassword(passwordRef.current.value))
       }
-  
-      setLoading(false)
-    }
+      
+      Promise.all(promises).then(() => {
+          history.push('/')
+      }).catch(() => {
+          setError('Failed to update')
+      }).finally(() => {
+          setLoading(false)
+      })
+
+      }
 
     return (
         <>
@@ -44,16 +50,16 @@ const SignUp = () => {
                     <Icon to="/">bMarket</Icon>
                     <FormContent>
                         <Form onSubmit={handleSubmit}>
-                            <FormH1>Sign up with new account</FormH1>
+                            <FormH1>Update Profile</FormH1>
                             {error && <FormError>{error}</FormError>}
                             <FormLabel htmlFor='for'>Email</FormLabel>
-                            <FormInput type='email' required ref={emailRef} />
+                            <FormInput type='email' required ref={emailRef} defaultValue={currentUser.email}/>
                             <FormLabel htmlFor='for'>Password</FormLabel>
-                            <FormInput type='password' required ref={passwordRef} />
+                            <FormInput type='password' ref={passwordRef} placeholder="Leave blank to keep the same password" />
                             <FormLabel htmlFor='for'>Repeat password</FormLabel>
-                            <FormInput type='password' required ref={repeatPasswordRef}/>
+                            <FormInput type='password' ref={repeatPasswordRef} placeholder="Leave blank to keep the same password"/>
                             <FormButton type='submit' disabled={loading}>Continue</FormButton>
-                            <Text to="signin">Already have an account?</Text>
+                            <Text to="/">Cancel</Text>
                         </Form>
                     </FormContent>
                 </FormWrap>
@@ -62,4 +68,4 @@ const SignUp = () => {
     )
 }
 
-export default SignUp
+export default UpdateProfile

@@ -31,7 +31,7 @@ const Slider2 = () => {
               <Carousel
               swipeable={false}
               draggable={false}
-              showDots={true}
+              showDots={false}
               ssr={true}
               responsive={responsive}
               infinite={true}

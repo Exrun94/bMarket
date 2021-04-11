@@ -114,3 +114,12 @@ export const Text = styled(Link)`
         cursor: pointer;
     }
 `;
+
+export const FormError = styled.p`
+    font-size: 0.8rem;
+    background-color: #ff5a5a;
+    color: #fff;
+    border: 1px solid #ffacac;
+    border-radius: 4px;
+    padding: 10px 0 10px 50px;
+`;

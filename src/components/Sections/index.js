@@ -29,7 +29,7 @@ const Sections = ({lightBg, id, imgStart, heading, lightText, subheading, darkTe
                                 <Subtitle darkText={darkText}>{subtitle}</Subtitle>
                                 <ButtonWrapper>
                                     <ButtonLink 
-                                    to="signin" 
+                                    to="signup" 
                                     smooth={true} 
                                     duration={500} 
                                     spy={true}

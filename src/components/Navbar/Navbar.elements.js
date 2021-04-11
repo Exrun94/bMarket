@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 import { Link as LinkR } from 'react-router-dom'
 import { Link as LinkS } from 'react-scroll';
+import {FaUserCircle} from 'react-icons/fa'
+import { DropdownItem } from 'styled-dropdown-component'
+
 
 export const Nav = styled.nav`
     background: ${({scrollNav}) => (scrollNav ? '#000' : 'transparent')};
@@ -115,4 +118,31 @@ export const NavBtnLink = styled(LinkR)`
         background: #fff;
         color: #010606;
     }
+`;
+
+export const DropdownMenuItem = styled(DropdownItem)`
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.9rem;
+    
+    &:hover {
+        color: #01bf71;
+    }
+`;
+
+export const DropdownMenuLink = styled(LinkR)`
+    cursor: pointer;
+    text-decoration: none;
+    color: #000;
+    
+    &:hover {
+        color: #01bf71;
+    }
+`;
+
+export const NavAvatar = styled(FaUserCircle)`
+    height: 100%;
+    cursor: pointer;
+    margin-left: 10px;
+
 `;

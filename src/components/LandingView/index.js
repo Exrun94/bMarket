@@ -1,18 +1,7 @@
 import React, {useState} from 'react'
 import BgVideo from '../../videos/video.mp4'
 import { ButtonScroll } from '../Button.element'
-
-import { 
-    LandingContainer, 
-    Background,
-    Video,
-    Content,
-    H1,
-    P,
-    ButtonWrapper,
-    ArrowForward,
-    ArrowRight,
- } from './LandingView.elements'
+import { LandingContainer, Background,Video,Content,H1,P,ButtonWrapper,ArrowForward,ArrowRight,} from './LandingView.elements'
 
 const LandingView = () => {
 

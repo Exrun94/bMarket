@@ -2,22 +2,18 @@ import React, {useState, useEffect} from 'react'
 import { FaBars } from 'react-icons/fa'
 import {IconContext} from 'react-icons/lib'
 import { animateScroll as scroll } from 'react-scroll'
-
-import { 
-    Nav, 
-    NavbarContainer, 
-    NavLogo,
-    MobileIcon,
-    NavMenu, 
-    NavItem, 
-    NavLinks,
-    NavBtn,
-    NavBtnLink, 
- } from './Navbar.elements'
+import { Dropdown, DropdownMenu, DropdownDivider } from 'styled-dropdown-component';
+import { Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavBtn, NavBtnLink, NavAvatar, DropdownMenuItem, DropdownMenuLink } from './Navbar.elements'
+import { ButtonNormal } from '../Button.element'
+import { useAuth } from '../../contexts/AuthContext'
 
 const Navbar = ({ toggle }) => {
 
+    const { currentUser, logout } = useAuth();
     const [scrollNav, setScrollNav] = useState(false)
+    const [hidden, setHidden] = useState(true);
+
+    console.log(currentUser)
 
     const changeNav = () => {
         if(window.scrollY >= 80) {
@@ -81,7 +77,7 @@ const Navbar = ({ toggle }) => {
                             offset={-80}
                             >Services</NavLinks>
                         </NavItem>
-                        <NavItem>
+                        {!currentUser && <NavItem>
                             <NavLinks to="signup"
                             smooth={true}
                             duration={500}
@@ -89,11 +85,29 @@ const Navbar = ({ toggle }) => {
                             exact='true'
                             offset={-80}
                             >Sign Up</NavLinks>
-                        </NavItem>
+                        </NavItem> }
                     </NavMenu>
                     <NavBtn>
-                        <NavBtnLink to="signin">Sign In</NavBtnLink>
+                        {!currentUser && <NavBtnLink to="signin">Sign In</NavBtnLink> }
                     </NavBtn>
+                    {currentUser &&
+                    <Dropdown>
+                        <NavBtn dropdownToggle onClick={() => setHidden(!hidden)}>
+                            <ButtonNormal primary={true} fontBig={true}>
+                                Account   <NavAvatar /> 
+                            </ButtonNormal>
+                            <DropdownMenu hidden={hidden} toggle={() => setHidden(!hidden)}>
+                            <DropdownMenuItem>Balance: </DropdownMenuItem>
+                            <DropdownDivider />
+                            <DropdownMenuItem><DropdownMenuLink to="marketplace">Visit Market</DropdownMenuLink></DropdownMenuItem>
+                            <DropdownMenuItem><DropdownMenuLink to="my-wallet">My Wallet</DropdownMenuLink></DropdownMenuItem>
+                            <DropdownMenuItem><DropdownMenuLink to="update-profile">Update Profile</DropdownMenuLink></DropdownMenuItem>
+                            <DropdownDivider />
+                            <DropdownMenuItem onClick={logout}>Logout</DropdownMenuItem>
+                        </DropdownMenu>
+                        </NavBtn>
+                    </Dropdown>
+                    }
                 </NavbarContainer>
             </Nav>
             </IconContext.Provider>

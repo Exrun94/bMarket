@@ -3,8 +3,14 @@ import MarketList from './MarketList'
 import { MarketContainer } from './MarketList.elements'
 import MarketNav from './MarketNav'
 import SearchBar from '../SearchBar'
+import { useAuth } from '../../contexts/AuthContext'
+
+
 
 const MarketPlace = () => {
+
+    const { currentUser} = useAuth();
+
     return (
         <>  
             <MarketContainer>

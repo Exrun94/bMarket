@@ -17,10 +17,8 @@ const Sections = ({lightBg, id, imgStart, heading, lightText, subheading,
                                 <Subtitle darkText={darkText}>{subtitle}</Subtitle>
                                 <ButtonWrapper>
                                     <ButtonLink 
-                                    to="signup" 
-                                    smooth={true ? 1 : 0} 
+                                    to="signup"
                                     duration={500} 
-                                    spy={true ? 1 : 0}
                                     exact="true" 
                                     offset={-80} 
                                     primary={primary ? 1 : 0} 

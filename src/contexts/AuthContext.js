@@ -12,6 +12,7 @@ export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null)
   const [loading, setLoading] = useState(true)
   const [balance, setBalance] = useState([])
+  const [documentRef, setDocumentRef] = useState('')
 
   function signup(email, password) {
     return auth.createUserWithEmailAndPassword(email, password)
@@ -38,11 +39,13 @@ export function AuthProvider({ children }) {
   }
 
   function claimedBalance() {
-    return db.collection('users').doc(currentUser.uid).collection('wallet').add({ usd: 250, claimed: true })
+    return db.collection('users').doc(currentUser.uid).collection('wallet').add({ usd: 250, claimed: true }).then((docRef => {
+      setDocumentRef(docRef.id)
+    }))
   }
 
   function marketPurchase(currency, amount, substractAmount) {
-    return db.collection('users').doc(currentUser.uid).collection('wallet').doc('7cJWWxxVNbX3Pdw1nwAZ').update({
+    return db.collection('users').doc(currentUser.uid).collection('wallet').doc(documentRef).update({
        [currency]: amount,
        usd: substractAmount
       })
@@ -66,7 +69,7 @@ export function AuthProvider({ children }) {
     })
 
     return ref
-  }, [balance])
+  }, [currentUser?.uid])
 
 
   const value = {
@@ -79,7 +82,8 @@ export function AuthProvider({ children }) {
     updatePassword,
     claimedBalance,
     balance,
-    marketPurchase
+    marketPurchase,
+    documentRef
   }
 
   return (

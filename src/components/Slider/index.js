@@ -50,7 +50,7 @@ const Slider2 = () => {
 
                 {SliderData().map((coin) => {
                     return (
-                        <>
+                        <div key={coin.id}>
                         <SliderCard key={coin.id}>
                             <Img src={coin.image} alt={coin.name} />   
                             <CoinName>{coin.name}</CoinName>
@@ -58,7 +58,7 @@ const Slider2 = () => {
                             <CoinMCap>Market Cap: ${(coin.market_cap).toLocaleString()}</CoinMCap>
                             <ButtonLink to={coin.id}>Buy now</ButtonLink>
                         </SliderCard>
-                    </>
+                    </div>
                     )
                 })}
               </Carousel>

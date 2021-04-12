@@ -12,10 +12,9 @@ const CoinDetails = () => {
     const [coin, setCoin] = useState([])
     const [error, setError] = useState('')
     const [total, setTotal] = useState(0)
-    const { currentUser, balance, marketPurchase } = useAuth()
+    const { balance, marketPurchase } = useAuth()
     const amountRef = useRef()
 
-    
 
     function onChange(e) {
         e.preventDefault()
@@ -35,10 +34,6 @@ const CoinDetails = () => {
             return setError("Please type a number")
         }
 
-        console.log(coin?.[0]?.name)
-        console.log(amountRef.current.value)
-        console.log(balance?.[0]?.usd - total)
-        console.log(currentUser.uid)
         marketPurchase(coin?.[0]?.name, amountRef.current.value, (balance?.[0]?.usd - total))
 
     }
@@ -59,7 +54,7 @@ const CoinDetails = () => {
         }
 
         fetchData()
-    }, [])
+    }, [currentCoin])
 
 
     return (

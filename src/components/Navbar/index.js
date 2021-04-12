@@ -43,45 +43,40 @@ const Navbar = ({ toggle }) => {
                     <NavMenu>
                         <NavItem>
                             <NavLinks to="about"
-                            smooth={true ? 1 : 0}
                             duration={500}
-                            spy={true ? 1 : 0}
+                            spy={true}
                             exact='true'
                             offset={-80}
                              >About</NavLinks>
                         </NavItem>
                         <NavItem>
                             <NavLinks to="market"
-                            smooth={true ? 1 : 0}
                             duration={500}
-                            spy={true ? 1 : 0}
+                            spy={true}
                             exact='true'
                             offset={-80}
                              >Market</NavLinks>
                         </NavItem>
                         <NavItem>
                             <NavLinks to="discover"
-                            smooth={true ? 1 : 0}
                             duration={500}
-                            spy={true ? 1 : 0}
+                            spy={true}
                             exact='true'
                             offset={-80}
                             >Discover</NavLinks>
                         </NavItem>
                         <NavItem>
                             <NavLinks to="services"
-                            smooth={true ? 1 : 0}
                             duration={500}
-                            spy={true ? 1 : 0}
+                            spy={true}
                             exact='true'
                             offset={-80}
                             >Services</NavLinks>
                         </NavItem>
                         {!currentUser && <NavItem>
                             <NavLinks to="signup"
-                            smooth={true ? 1 : 0}
                             duration={500}
-                            spy={true ? 1 : 0}
+                            spy={true}
                             exact='true'
                             offset={-80}
                             >Sign Up</NavLinks>

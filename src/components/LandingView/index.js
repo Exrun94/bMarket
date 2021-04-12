@@ -30,9 +30,7 @@ const LandingView = () => {
                     dark="true" 
                     onMouseEnter={onHover} 
                     onMouseLeave={onHover}
-                    smooth={true ? 1 : 0}
                     duration={500}
-                    spy={true ? 1 : 0}
                     exact='true'
                     offset={-80}
                     >Get started {hover ? <ArrowForward /> : <ArrowRight />}
@@ -54,9 +52,7 @@ const LandingView = () => {
                     to="claim-bonus"
                     primary="true"
                     dark="true" 
-                    smooth={true}
                     duration={500}
-                    spy={true}
                     exact='true'
                     offset={-80}
                     >Claim $250 {hover ? <ArrowForward /> : <ArrowRight />}
@@ -64,7 +60,7 @@ const LandingView = () => {
                 </ButtonWrapper>
                 }
             </Content>
-            
+
         </LandingContainer>}
     </>
     )

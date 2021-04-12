@@ -20,4 +20,7 @@ The project is cryptocurrency related app.
 [Firebase/FireStore]
 [Styled-Components]
 
+### Project hosting
+[Deployed](https://softuni-reactjs-project-c80bc.web.app/)
+
 

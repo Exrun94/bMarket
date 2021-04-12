@@ -1,11 +1,9 @@
 import { useState, useEffect } from 'react'
 import coinGecko from '../../api/APIUtils'
 
-
 const SliderData = () => {
 
     const [coins, setCoins] = useState([])
-    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         const fetchData = async() => {
@@ -17,8 +15,7 @@ const SliderData = () => {
             })
 
             setCoins(response.data)
-            setLoading(false)
-
+            return response
         }
 
         fetchData()

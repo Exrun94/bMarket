@@ -8,7 +8,7 @@ import Slider from '../components/Slider'
 import { useAuth } from '../contexts/AuthContext'
 
 
-const Home = () => {
+const HomePage = () => {
 
     const { currentUser } = useAuth()
     const [isOpen, setIsOpen] = useState(false)
@@ -16,7 +16,6 @@ const Home = () => {
       setIsOpen(!isOpen)
   }
   
-
     return (
         <>
             <Navbar toggle={toggle}/>
@@ -30,4 +29,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default HomePage

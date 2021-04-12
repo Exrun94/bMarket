@@ -1,8 +1,10 @@
 import React from 'react'
 import { ButtonLink } from '../Button.element'
-import { ButtonWrapper,Column1,Column2,Container,Heading,Img,ImgWrapper,Row,SubHeading,Subtitle,TextWrapper,Wrapper, } from './Sections.elements'
+import { ButtonWrapper,Column1,Column2,Container,Heading,Img,
+         ImgWrapper,Row,SubHeading,Subtitle,TextWrapper,Wrapper, } from './Sections.elements'
 
-const Sections = ({lightBg, id, imgStart, heading, lightText, subheading, darkText, subtitle, buttonLabel, img, alt, dark, dark2, primary}) => {
+const Sections = ({lightBg, id, imgStart, heading, lightText, subheading,
+                 darkText, subtitle, buttonLabel, img, alt, dark, dark2, primary}) => {
     return (
         <>
             <Container lightBg={lightBg} id={id}>

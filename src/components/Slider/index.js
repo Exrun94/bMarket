@@ -1,9 +1,9 @@
 import React from 'react'
 import SliderData from './SliderData'
-import {Img, SliderCard, CoinName, CoinPrice, CoinMCap, Container, Header, ButtonLinkR } from './Slider.elements'
 import {ButtonLink} from '../Button.element'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css"
+import { Img, SliderCard, CoinName, CoinPrice, CoinMCap, Container, Header, ButtonLinkR } from './Slider.elements'
 
 
 const Slider2 = () => {

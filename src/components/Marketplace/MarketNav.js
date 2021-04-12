@@ -23,7 +23,7 @@ const MarketNav = () => {
                                 Account   <NavAvatar /> 
                             </ButtonNormal>
                             <DropdownMenu hidden={hidden} toggle={() => setHidden(!hidden)}>
-                            <DropdownMenuItem>Balance: ${balance?.[0]?.usd} </DropdownMenuItem>
+                            <DropdownMenuItem>Balance: ${(balance?.[0]?.usd)?.toFixed(2)} </DropdownMenuItem>
                             <DropdownDivider />
                             <DropdownMenuItem><DropdownMenuLink to="/">Visit Dashboard</DropdownMenuLink></DropdownMenuItem>
                             <DropdownMenuItem><DropdownMenuLink to="my-wallet">My Wallet</DropdownMenuLink></DropdownMenuItem>

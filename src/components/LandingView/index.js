@@ -1,15 +1,14 @@
-import React, {useEffect, useState} from 'react'
+import React, { useState } from 'react'
 import BgVideo from '../../videos/video.mp4'
 import { ButtonLink } from '../Button.element'
-import { LandingContainer, Background,Video,Content,H1,P,ButtonWrapper,ArrowForward,ArrowRight,} from './LandingView.elements'
 import { useAuth } from '../../contexts/AuthContext'
+import { LandingContainer, Background,Video,Content,H1,P,ButtonWrapper,ArrowForward,ArrowRight,} from './LandingView.elements'
 
 
 const LandingView = () => {
 
     const [hover, setHover] = useState(false)
     const { balance, claimedBalance, currentUser } = useAuth()
-
 
     const onHover = () => {
         setHover(!hover)
@@ -55,8 +54,6 @@ const LandingView = () => {
                     to="claim-bonus"
                     primary="true"
                     dark="true" 
-                    // onMouseEnter={onHover} 
-                    // onMouseLeave={onHover}
                     smooth={true}
                     duration={500}
                     spy={true}

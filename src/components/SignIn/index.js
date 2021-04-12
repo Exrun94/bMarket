@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
-import { Container,Form,FormButton,FormContent,FormH1,FormInput,FormLabel,FormWrap,Icon,Text, FormError } from './SignIn.elements'
 import { useAuth } from '../../contexts/AuthContext'
 import { useHistory } from "react-router-dom"
+import { Container,Form,FormButton,FormContent,FormH1,FormInput,FormLabel,FormWrap,Icon,Text, FormError } from './SignIn.elements'
 
 
 const SignIn = () => {
@@ -16,7 +16,6 @@ const SignIn = () => {
     async function handleSubmit(e) {
       e.preventDefault()
   
-  
       try {
         setError("")
         setLoading(true)
@@ -28,6 +27,7 @@ const SignIn = () => {
   
       setLoading(false)
     }
+    
     return (
         <>
             <Container>

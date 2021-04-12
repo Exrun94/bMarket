@@ -2,10 +2,12 @@ import React, {useState, useEffect} from 'react'
 import { FaBars } from 'react-icons/fa'
 import {IconContext} from 'react-icons/lib'
 import { animateScroll as scroll } from 'react-scroll'
-import { Dropdown, DropdownMenu, DropdownDivider } from 'styled-dropdown-component';
-import { Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavBtn, NavBtnLink, NavAvatar, DropdownMenuItem, DropdownMenuLink } from './Navbar.elements'
 import { ButtonNormal } from '../Button.element'
 import { useAuth } from '../../contexts/AuthContext'
+import { Dropdown, DropdownMenu, DropdownDivider } from 'styled-dropdown-component';
+import { Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks,
+         NavBtn, NavBtnLink, NavAvatar, DropdownMenuItem, DropdownMenuLink } from './Navbar.elements'
+
 
 const Navbar = ({ toggle }) => {
 
@@ -13,7 +15,6 @@ const Navbar = ({ toggle }) => {
     const [scrollNav, setScrollNav] = useState(false)
     const [hidden, setHidden] = useState(true);
     
-
     const changeNav = () => {
         if(window.scrollY >= 80) {
             setScrollNav(true)
@@ -96,7 +97,7 @@ const Navbar = ({ toggle }) => {
                                 Account   <NavAvatar /> 
                             </ButtonNormal>
                             <DropdownMenu hidden={hidden} toggle={() => setHidden(!hidden)}>
-                            <DropdownMenuItem>Balance: ${balance?.[0]?.usd} </DropdownMenuItem>
+                            <DropdownMenuItem>Balance: ${(balance?.[0]?.usd)?.toFixed(2)} </DropdownMenuItem>
                             <DropdownDivider />
                             <DropdownMenuItem><DropdownMenuLink to="marketplace">Visit Market</DropdownMenuLink></DropdownMenuItem>
                             <DropdownMenuItem><DropdownMenuLink to="my-wallet">My Wallet</DropdownMenuLink></DropdownMenuItem>

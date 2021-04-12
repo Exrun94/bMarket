@@ -1,27 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import { useParams, useLocation } from 'react-router-dom'
+import React, { useEffect, useRef, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import axios from '../../../api/APIUtils'
-import { 
-    Ath,
-    AthChange,
-    AthDate,
-    CirculationSupply,
-    Container,
-    High24, 
-    Img, 
-    Low24, 
-    MarketCap, 
-    Name, 
-    Price, 
-    PriceChange24, 
-    PriceChangePercentage24, 
-    Rank, 
-    TotalSupply, 
-    Volume,
-    Wrapper,
-    MainWrapper
-
- } from './CoinDetails.elements'
+import { FormContainer,FormWrap,Icon,FormContent,Form,FormH1,FormError,FormLabel,FormInput,FormButton,Text } from './CoinDetails.elements'
+import { useAuth } from '../../../contexts/AuthContext'
 
 
 
@@ -29,8 +10,39 @@ const CoinDetails = () => {
 
     const currentCoin = useLocation().pathname.split('/').join('')
     const [coin, setCoin] = useState([])
+    const [error, setError] = useState('')
+    const [total, setTotal] = useState(0)
+    const { currentUser, balance, marketPurchase } = useAuth()
+    const amountRef = useRef()
 
     
+
+    function onChange(e) {
+        e.preventDefault()
+        const current = e.target.value * coin?.[0]?.current_price
+
+       return setTotal(current)
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault()
+        
+        if(total > balance?.[0]?.usd) {
+            return setError("Not enough balance")
+        }
+
+        if(total !== +total) {
+            return setError("Please type a number")
+        }
+
+        console.log(coin?.[0]?.name)
+        console.log(amountRef.current.value)
+        console.log(balance?.[0]?.usd - total)
+        console.log(currentUser.uid)
+        marketPurchase(coin?.[0]?.name, amountRef.current.value, (balance?.[0]?.usd - total))
+
+    }
+
     useEffect(() => {
         const fetchData = async() => {
            const response = await axios.get(`/coins/markets`, {
@@ -43,8 +55,7 @@ const CoinDetails = () => {
             })
 
             setCoin(response.data)
-            return fetchData
-
+            
         }
 
         fetchData()
@@ -53,35 +64,25 @@ const CoinDetails = () => {
 
     return (
         <>
-            {coin.map(data => {
-                return (
-                    <Container key={coin.id}>
-                        <MainWrapper>
-                            <Wrapper>
-                                <Img src={data.image} />
-                                <Name>{data.name}</Name>
-                                <Rank>Rank: #{data.market_cap_rank}</Rank>
-                            </Wrapper>
-                            <Wrapper>
-                                <Price>Price: ${(data.current_price).toLocaleString()}</Price>
-                                <MarketCap>Market Cap: ${(data.market_cap).toLocaleString()}</MarketCap>
-                                <Volume>Volume: ${(data.total_volume).toLocaleString()}</Volume>
-                                <CirculationSupply>Circulating Supply: {data.circulating_supply}</CirculationSupply>
-                                <TotalSupply>Max Supply: {data.total_supply}</TotalSupply>
-                            </Wrapper>  
-                            <Wrapper>
-                                <PriceChange24 color={(data.price_change_24h > 0) ? 1 : 0}><span>Price change 24h:</span> ${(data.price_change_24h).toFixed(2)}</PriceChange24>
-                                <PriceChangePercentage24><span>Percentage change 24h:</span> {(data.price_change_percentage_24h).toFixed(2)}%</PriceChangePercentage24>
-                                <High24>High 24h: ${(data.high_24h).toLocaleString()}</High24>
-                                <Low24>Low 24h: ${(data.low_24h).toLocaleString()}</Low24>
-                                <Ath>${(data.ath).toLocaleString()}</Ath>
-                                <AthChange color={(data.ath_change_percentage > 0) ? 1 : 0}><span>Percentage change from ATH:</span> {(data.ath_change_percentage).toFixed(2)}%</AthChange>
-                                <AthDate>ATH Date: {(data.ath_date).split('T')[0]}</AthDate>
-                            </Wrapper>
-                        </MainWrapper>
-                    </Container>
-                )
-            })}
+            <FormContainer>
+                <FormWrap>
+                    <Icon to="/">bMarket</Icon>
+                    <FormContent>
+                        <Form onChange={onChange} onSubmit={handleSubmit}>
+                            <FormH1>Checkout</FormH1>
+                            {error && <FormError>{error}</FormError>}
+                            <FormH1 key={coin?.[0]?.id} htmlFor='for'>Currency: {coin?.[0]?.name}</FormH1>
+                            <FormH1 htmlFor='for'>Current Price: ${(coin?.[0]?.current_price)?.toLocaleString()}</FormH1>
+                            <FormLabel htmlFor='for'>Current wallet holdings: ${(balance?.[0]?.usd)?.toFixed(2)}</FormLabel>
+                            <FormInput type='text' required placeholder="Purchase amount" ref={amountRef} />
+                            <FormLabel htmlFor='for'>Total: ${total.toFixed(2)}</FormLabel>
+
+                            <FormButton type='submit'>Continue</FormButton>
+                            <Text to="marketplace">Cancel transaction</Text>
+                        </Form>
+                    </FormContent>
+                </FormWrap>
+            </FormContainer>
         </>
     )
 }

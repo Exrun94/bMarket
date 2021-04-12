@@ -1,15 +1,8 @@
 import React from 'react'
-import { Container,Form, FormContent,FormH1, FormWrap,Icon,Text, FormError, Img } from './ClaimBonus.elements'
-import { useAuth } from '../../contexts/AuthContext'
 import Icon9 from '../../images/svg-9.svg'
-
+import { Container,Form, FormContent,FormH1, FormWrap,Icon,Text, FormError, Img } from './ClaimBonus.elements'
 
 const ClaimBonus = () => {
-
-    const { } = useAuth()
-
-  
-    
 
     return (
         <>

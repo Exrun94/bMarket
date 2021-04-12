@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
-import { Container,Form,FormButton,FormContent,FormH1,FormInput,FormLabel,FormWrap,Icon,Text, FormError } from './SignUp.elements'
 import { useAuth } from '../../contexts/AuthContext'
 import { useHistory } from "react-router-dom"
+import { Container,Form,FormButton,FormContent,FormH1,FormInput,FormLabel,FormWrap,Icon,Text, FormError } from './SignUp.elements'
 
 
 const SignUp = () => {

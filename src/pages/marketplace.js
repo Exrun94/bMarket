@@ -2,7 +2,7 @@ import React from 'react'
 import MarketPlace from '../components/Marketplace'
 
 
-const Marketplace = () => {
+const MarketplacePage = () => {
 
     return (
         <>  
@@ -11,4 +11,4 @@ const Marketplace = () => {
     )
 }
 
-export default Marketplace
+export default MarketplacePage

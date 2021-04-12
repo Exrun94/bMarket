@@ -1,5 +1,7 @@
 import React, { useContext, useState, useEffect } from "react"
-import { auth } from "../firebase"
+import { auth, db } from "../firebase"
+import { useCollection, useDocument } from 'react-firebase-hooks/firestore'
+
 
 const AuthContext = React.createContext()
 
@@ -8,7 +10,7 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState()
+  const [currentUser, setCurrentUser] = useState(null)
   const [loading, setLoading] = useState(true)
 
   function signup(email, password) {
@@ -35,6 +37,10 @@ export function AuthProvider({ children }) {
     return currentUser.updatePassword(password)
   }
 
+  function claimedBalance() {
+    return db.collection('users').doc(currentUser.uid).collection('wallet').add({ usd: 250, claimed: true })
+  }
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       setCurrentUser(user)
@@ -44,6 +50,20 @@ export function AuthProvider({ children }) {
     return unsubscribe
   }, [])
 
+
+  const [balance, setBalance] = useState([])
+
+
+  useEffect(() => {
+    const ref = db.collection(`users`).doc(currentUser?.uid).collection('wallet')
+
+    ref.onSnapshot((snapshot) => {
+      setBalance(snapshot.docs.map(doc => doc.data()))
+    })
+
+    return ref
+  }, [balance])
+
   const value = {
     currentUser,
     login,
@@ -51,7 +71,9 @@ export function AuthProvider({ children }) {
     logout,
     resetPassword,
     updateEmail,
-    updatePassword
+    updatePassword,
+    claimedBalance,
+    balance
   }
 
   return (

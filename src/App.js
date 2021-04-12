@@ -9,6 +9,8 @@ import { AuthProvider } from './contexts/AuthContext';
 import PrivateRoute from './PrivateRoute'
 import ForgotPassword from './pages/forgotPassword';
 import UpdateProfilePage from './pages/updateProfile';
+import ClaimBonusPage from './pages/claimBonus';
+import CoinDetailsPage from './pages/coinDetails';
 
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
 				<Route path="/forgot-password" component={ForgotPassword} />
 				<PrivateRoute path="/marketplace" component={Marketplace} />
 				<PrivateRoute path="/update-profile" component={UpdateProfilePage} />
+				<PrivateRoute path="/claim-bonus" component={ClaimBonusPage} />
+				<PrivateRoute path="/:id" component={CoinDetailsPage} />
 			</Switch>
 		</Router>
 	</AuthProvider>

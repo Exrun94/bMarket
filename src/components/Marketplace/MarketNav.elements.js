@@ -1,12 +1,11 @@
 import styled from 'styled-components'
-import {Link} from 'react-router-dom'
+import { Link as LinkR } from 'react-router-dom'
 import {FaUserCircle} from 'react-icons/fa'
-
+import { DropdownItem } from 'styled-dropdown-component'
 
 export const Nav = styled.div`
     background: #000;
     height: 80px;
-    margin-top: -80px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,7 +25,7 @@ export const NavContainer = styled.div`
     max-width: 1100px;
 `;
 
-export const NavLogo = styled(Link)`
+export const NavLogo = styled(LinkR)`
     color: #fff;
     justify-self: flex-start;
     cursor: pointer;
@@ -36,6 +35,15 @@ export const NavLogo = styled(Link)`
     margin-left: 24px;
     font-weight: bold;
     text-decoration: none;
+`;
+
+export const NavBtn = styled.nav`
+    display: flex;
+    align-items: center;
+
+    @media screen and (max-width: 768px) {
+        display: none;
+    }
 `;
 
 export const NavMenu = styled.ul`
@@ -57,7 +65,7 @@ export const NavItem = styled.div`
 `;
 
 
-export const NavLink = styled(Link)`
+export const NavLink = styled(LinkR)`
     color: #fff;
     display: flex;
     position: relative;
@@ -90,10 +98,29 @@ export const NavDrowDown = styled.div`
     z-index: 1;
 `;
 
-export const NavAvatar = styled(FaUserCircle)`
-    color: #c3c3c3;
-    height: 100%;
-    margin-left: 40px;
+export const DropdownMenuItem = styled(DropdownItem)`
     cursor: pointer;
-    display: inline-block;
+    text-decoration: none;
+    font-size: 0.9rem;
+    
+    &:hover {
+        color: #01bf71;
+    }
+`;
+
+export const DropdownMenuLink = styled(LinkR)`
+    cursor: pointer;
+    text-decoration: none;
+    color: #000;
+    
+    &:hover {
+        color: #01bf71;
+    }
+`;
+
+export const NavAvatar = styled(FaUserCircle)`
+    height: 100%;
+    cursor: pointer;
+    margin-left: 10px;
+
 `;

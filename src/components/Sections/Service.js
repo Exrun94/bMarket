@@ -2,15 +2,7 @@ import React from 'react'
 import Icon1 from '../../images/svg-1.svg'
 import Icon2 from '../../images/svg-8.svg'
 import Icon3 from '../../images/svg-4.svg'
-import { 
-    Card, 
-    Container, 
-    H1, 
-    H2, 
-    Icon, 
-    P, 
-    Wrapper
- } from './Service.elements'
+import { Card, Container, H1, H2, Icon, P, Wrapper } from './Service.elements'
 
 const Services = () => {
     return (
@@ -30,7 +22,7 @@ const Services = () => {
                 <Card>
                     <Icon src={Icon3} />
                     <H2>Premium Benefits</H2>
-                    <P>Unlock our special memebership card.</P>
+                    <P>Unlock our special sign up bonus.</P>
                 </Card>
             </Wrapper>
         </Container>

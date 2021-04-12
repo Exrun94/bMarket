@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import coinGecko from '../../api/APIUtils'
+import axios from '../../api/APIUtils'
 import { TR, TD, Table, Img, MarketWrapper, THEAD, TBODY, SPAN, Details, BuyBtn } from './MarketList.elements'
 
 
@@ -9,22 +9,23 @@ const MarketList = () => {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        const fetchData = async() => {
-           const response = await coinGecko.get('/coins/markets', {
+        
+        async function fetchData() {
+            const request = await axios.get('coins/markets', {
                 params: {
                     vs_currency: "usd",
                     per_page: 100,
                     price_change_percentage: "1h,24h,7d"
                 }
             })
-
-            setCoins(response.data)
+            setCoins(request.data)
             setLoading(false)
-
+            return request;
         }
 
-        fetchData()
+        fetchData();
     }, [])
+
 
     const renderCoins = () => {
         if(loading) {

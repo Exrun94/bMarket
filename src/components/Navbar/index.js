@@ -9,11 +9,10 @@ import { useAuth } from '../../contexts/AuthContext'
 
 const Navbar = ({ toggle }) => {
 
-    const { currentUser, logout } = useAuth();
+    const { currentUser, logout, balance, } = useAuth();
     const [scrollNav, setScrollNav] = useState(false)
     const [hidden, setHidden] = useState(true);
-
-    console.log(currentUser)
+    
 
     const changeNav = () => {
         if(window.scrollY >= 80) {
@@ -43,45 +42,45 @@ const Navbar = ({ toggle }) => {
                     <NavMenu>
                         <NavItem>
                             <NavLinks to="about"
-                            smooth={true}
+                            smooth={true ? 1 : 0}
                             duration={500}
-                            spy={true}
+                            spy={true ? 1 : 0}
                             exact='true'
                             offset={-80}
                              >About</NavLinks>
                         </NavItem>
                         <NavItem>
                             <NavLinks to="market"
-                            smooth={true}
+                            smooth={true ? 1 : 0}
                             duration={500}
-                            spy={true}
+                            spy={true ? 1 : 0}
                             exact='true'
                             offset={-80}
                              >Market</NavLinks>
                         </NavItem>
                         <NavItem>
                             <NavLinks to="discover"
-                            smooth={true}
+                            smooth={true ? 1 : 0}
                             duration={500}
-                            spy={true}
+                            spy={true ? 1 : 0}
                             exact='true'
                             offset={-80}
                             >Discover</NavLinks>
                         </NavItem>
                         <NavItem>
                             <NavLinks to="services"
-                            smooth={true}
+                            smooth={true ? 1 : 0}
                             duration={500}
-                            spy={true}
+                            spy={true ? 1 : 0}
                             exact='true'
                             offset={-80}
                             >Services</NavLinks>
                         </NavItem>
                         {!currentUser && <NavItem>
                             <NavLinks to="signup"
-                            smooth={true}
+                            smooth={true ? 1 : 0}
                             duration={500}
-                            spy={true}
+                            spy={true ? 1 : 0}
                             exact='true'
                             offset={-80}
                             >Sign Up</NavLinks>
@@ -93,11 +92,11 @@ const Navbar = ({ toggle }) => {
                     {currentUser &&
                     <Dropdown>
                         <NavBtn dropdownToggle onClick={() => setHidden(!hidden)}>
-                            <ButtonNormal primary={true} fontBig={true}>
+                            <ButtonNormal primary={true ? 1 : 0} fontBig={true ? 1 : 0}>
                                 Account   <NavAvatar /> 
                             </ButtonNormal>
                             <DropdownMenu hidden={hidden} toggle={() => setHidden(!hidden)}>
-                            <DropdownMenuItem>Balance: </DropdownMenuItem>
+                            <DropdownMenuItem>Balance: ${balance?.[0]?.usd} </DropdownMenuItem>
                             <DropdownDivider />
                             <DropdownMenuItem><DropdownMenuLink to="marketplace">Visit Market</DropdownMenuLink></DropdownMenuItem>
                             <DropdownMenuItem><DropdownMenuLink to="my-wallet">My Wallet</DropdownMenuLink></DropdownMenuItem>

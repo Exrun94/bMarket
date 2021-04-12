@@ -1,7 +1,7 @@
 import React from 'react'
 import SliderData from './SliderData'
-import {Img,  SliderCard, CoinName, CoinPrice, CoinMCap, Container } from './Slider.elements'
-import { ButtonLink } from '../Button.element'
+import {Img, SliderCard, CoinName, CoinPrice, CoinMCap, Container, Header, ButtonLinkR } from './Slider.elements'
+import {ButtonLink} from '../Button.element'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css"
 
@@ -12,22 +12,25 @@ const Slider2 = () => {
         desktop: {
           breakpoint: { max: 3000, min: 1024 },
           items: 3,
-          slidesToSlide: 3 // optional, default to 1.
+          slidesToSlide: 3
         },
         tablet: {
           breakpoint: { max: 1024, min: 464 },
           items: 2,
-          slidesToSlide: 2 // optional, default to 1.
+          slidesToSlide: 2
         },
         mobile: {
           breakpoint: { max: 464, min: 0 },
           items: 1,
-          slidesToSlide: 1 // optional, default to 1.
+          slidesToSlide: 1
         }
       };
 
     return (
 			<Container id="market"> 
+              <Header>Show Reel</Header>
+              <ButtonLinkR to="marketplace">Visit Market</ButtonLinkR>
+
               <Carousel
               swipeable={false}
               draggable={false}
@@ -53,7 +56,7 @@ const Slider2 = () => {
                             <CoinName>{coin.name}</CoinName>
                             <CoinPrice>${(coin.current_price).toLocaleString()}</CoinPrice>
                             <CoinMCap>Market Cap: ${(coin.market_cap).toLocaleString()}</CoinMCap>
-                            <ButtonLink to="/marketplace">Buy now</ButtonLink>
+                            <ButtonLink to={coin.id}>Buy now</ButtonLink>
                         </SliderCard>
                     </>
                     )

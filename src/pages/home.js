@@ -5,10 +5,12 @@ import Service from '../components/Sections/Service'
 import { SectionAbout, SectionDiscover, SectionSignUp } from '../components/Sections/Sections.config'
 import Navbar from '../components/Navbar';
 import Slider from '../components/Slider'
+import { useAuth } from '../contexts/AuthContext'
 
 
 const Home = () => {
 
+    const { currentUser } = useAuth()
     const [isOpen, setIsOpen] = useState(false)
     const toggle = () => {
       setIsOpen(!isOpen)
@@ -23,7 +25,7 @@ const Home = () => {
             <Slider />
             <Sections {...SectionDiscover}/>
             <Service />
-            <Sections {...SectionSignUp}/>
+            {!currentUser && <Sections {...SectionSignUp}/>}
         </>
     )
 }
